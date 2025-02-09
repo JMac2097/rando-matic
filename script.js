@@ -55,11 +55,11 @@ const randomSelect = () => {
       highLightTag(randomTag);
     }, time);
 
-		const winner = document.querySelector('.tag.highlight').innerHTML;
-		messageContainer.querySelector('.winner').innerHTML += winner;
-		messageContainer.classList.remove('hidden');
-
-		// TODO reset this message as it only works on first time run through
+    setTimeout(() => {
+      const winner = document.querySelector('.tag.highlight').innerHTML;
+      messageContainer.querySelector('.winner').innerHTML = winner;
+      messageContainer.classList.remove('hidden');
+    }, time); // Small delay to ensure DOM update
 
 
   }, times * time);
