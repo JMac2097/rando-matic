@@ -7,7 +7,6 @@ textarea.focus();
 
 textarea.addEventListener('keyup', (e) => {
   createTags(e.target.value);
-  tagArray.push(e.target.value);
 
   if (e.key === 'Enter') {
     // TODO - wire up a submit button as well as Enter key
@@ -15,9 +14,8 @@ textarea.addEventListener('keyup', (e) => {
       e.target.value = ''; // TODO - instead of clearing here, we could enter the searches into a list to be recalled later
     }, 10);
 
-    console.log(tagArray);
-
-    if (tagArray.length > 1) {  // TODO - this length check is no good, as currently each letter is pushed to the array
+    const tags = document.querySelectorAll('.tag'); // get a nodelist of tags and then count them
+    if (tags.length > 1) {
       randomSelect();
     } else {
       alert('Please enter more than one tag');
