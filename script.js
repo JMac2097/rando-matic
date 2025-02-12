@@ -1,6 +1,7 @@
 const tagsEl = document.getElementById('tags');
 const textarea = document.getElementById('textarea');
 const messageContainer = document.querySelector('.message');
+const randomButton = document.querySelector('.randomise');
 
 textarea.focus();
 
@@ -55,13 +56,11 @@ const randomSelect = () => {
       highLightTag(randomTag);
     }, time);
 
-		const winner = document.querySelector('.tag.highlight').innerHTML;
-		messageContainer.querySelector('.winner').innerHTML += winner;
-		messageContainer.classList.remove('hidden');
+    const winner = document.querySelector('.tag.highlight').innerHTML;
+    messageContainer.querySelector('.winner').innerHTML += winner;
+    messageContainer.classList.remove('hidden');
 
-		// TODO reset this message as it only works on first time run through
-
-
+    // TODO reset this message as it only works on first time run through
   }, times * time);
 };
 
@@ -77,3 +76,8 @@ const highLightTag = (tag) => {
 const unhighLightTag = (tag) => {
   tag.classList.remove('highlight');
 };
+
+randomButton.addEventListener('click', randomSelect);
+
+
+//TODO now we have a button involved, the state of the page is a bit messed up, so we need to organise how we clean up.

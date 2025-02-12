@@ -72,3 +72,31 @@ textarea {
 .message.hidden {
 	display: none;
 }
+
+button.randomise {
+	background-color: #333;
+	color: #fff;
+	border: 2px solid #333;
+	padding: 10px 20px;
+	font-size: 1rem;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+button.randomise:hover {
+	background-color: #555;
+	color: black;
+	border: 2px solid #000;
+}
+
+.button-container {
+	display: flex;
+	justify-content: center;
+	padding: 20px;
+	margin-bottom: 1rem;
+}
+
+.hidden {
+	opacity: 0;
+	visibility: hidden;
+}
