@@ -24,6 +24,7 @@ textarea.addEventListener('keyup', (e) => {
   }
 });
 
+// TODO - this part could be done better and maybe with a submit button
 const createTags = (input) => {
   const tags = input
     .split(',')
