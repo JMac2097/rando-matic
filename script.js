@@ -1,7 +1,8 @@
 const tagsEl = document.getElementById('tags');
 const textarea = document.getElementById('textarea');
 const messageContainer = document.querySelector('.message');
-const randomButton = document.querySelector('.randomise');
+const tagArray = [];
+const resetButton = document.querySelector('.reset');
 
 textarea.focus();
 
@@ -14,10 +15,16 @@ textarea.addEventListener('keyup', (e) => {
       e.target.value = ''; // TODO - instead of clearing here, we could enter the searches into a list to be recalled later
     }, 10);
 
-    randomSelect();
+    const tags = document.querySelectorAll('.tag'); // get a nodelist of tags and then count them
+    if (tags.length > 1) {
+      randomSelect();
+    } else {
+      alert('Please enter more than one tag');
+    }
   }
 });
 
+// TODO - this part could be done better and maybe with a submit button
 const createTags = (input) => {
   const tags = input
     .split(',')
@@ -56,11 +63,12 @@ const randomSelect = () => {
       highLightTag(randomTag);
     }, time);
 
-    const winner = document.querySelector('.tag.highlight').innerHTML;
-    messageContainer.querySelector('.winner').innerHTML += winner;
-    messageContainer.classList.remove('hidden');
-
-    // TODO reset this message as it only works on first time run through
+    setTimeout(() => {
+      const winner = document.querySelector('.tag.highlight').innerHTML;
+      messageContainer.querySelector('.winner').innerHTML = winner;
+      messageContainer.classList.remove('hidden');
+			resetButton.addEventListener('click', resetTags);
+    }, time); // Small delay to ensure DOM update
   }, times * time);
 };
 
@@ -76,6 +84,11 @@ const highLightTag = (tag) => {
 const unhighLightTag = (tag) => {
   tag.classList.remove('highlight');
 };
+
+const resetTags = () => {
+	tagsEl.textContent = "";
+	messageContainer.classList.add('hidden');
+}
 
 randomButton.addEventListener('click', randomSelect);
 

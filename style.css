@@ -44,6 +44,11 @@ textarea {
   font-size: 1rem;
 }
 
+.tags {
+	display: flex;
+	justify-content: center;
+}
+
 .tag {
   background-color: #333;
   border: 2px solid #333;
@@ -53,6 +58,7 @@ textarea {
   margin: 0 10px 10px 0;
   display: inline-block;
   font-weight: bold;
+	font-size: 2rem;
 }
 
 .tag.highlight {
@@ -73,7 +79,7 @@ textarea {
 	display: none;
 }
 
-button.randomise {
+button {
 	background-color: #333;
 	color: #fff;
 	border: 2px solid #333;
@@ -83,7 +89,7 @@ button.randomise {
 	cursor: pointer;
 }
 
-button.randomise:hover {
+button:hover {
 	background-color: #555;
 	color: black;
 	border: 2px solid #000;
