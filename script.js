@@ -7,7 +7,7 @@ const resetButton = document.querySelector('.reset');
 textarea.focus();
 
 textarea.addEventListener('keyup', (e) => {
-  createTags(e.target.value);
+  // createTags(e.target.value);
 
   if (e.key === 'Enter') {
     // TODO - wire up a submit button as well as Enter key
