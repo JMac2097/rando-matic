@@ -7,7 +7,7 @@ const resetButton = document.querySelector('.reset');
 textarea.focus();
 
 textarea.addEventListener('keyup', (e) => {
-  // createTags(e.target.value);
+  createTags(e.target.value);
 
   if (e.key === 'Enter') {
     // TODO - wire up a submit button as well as Enter key
@@ -27,9 +27,9 @@ textarea.addEventListener('keyup', (e) => {
 // TODO - this part could be done better and maybe with a submit button
 const createTags = (input) => {
   const tags = input
-    .split(',')
-    .filter((tag) => tag.trim() !== '')
-    .map((tag) => tag.trim());
+    .split(',') //This takes a string input and splits it into an array at each comma.
+    .filter((tag) => tag.trim() !== '') //  removes whitespace from both ends of each string &  checks if the trimmed string is not empty
+    .map((tag) => tag.trim()); //creates a new array where each element has whitespace removed from both ends:
 
   tagsEl.innerHTML = '';
   tags.forEach((tag) => {
