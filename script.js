@@ -37,8 +37,19 @@ const createTags = (input) => {
     tagEl.classList.add('tag');
     tagEl.innerText = tag;
     tagsEl.appendChild(tagEl);
+    messageContainer.classList.add('hidden');
+    checkTagsLength(tags);
   });
 };
+
+// TODO - we want code that will count the number of tags and show the random button when there are more than one tag
+const checkTagsLength = (tags) => {
+  if (tags.length > 1) {
+    alert('Please enter less than 10 tags');
+    tagsEl.textContent = "";
+  }
+}
+
 
 const randomSelect = () => {
   const times = 30;
