@@ -3,13 +3,13 @@ const textarea = document.querySelector('.text-input');
 const messageContainer = document.querySelector('.message');
 const tagArray = [];
 const resetButton = document.querySelector('.reset');
+const randomButton = document.querySelector('button.randomise');
 
 textarea.focus();
 
 textarea.addEventListener('keyup', (e) => {
-  const tagArray = createTags(e.target.value);
-
   if (e.key === 'Enter') {
+  const tagArray = createTags(e.target.value);
     // TODO - wire up a submit button as well as Enter key
     setTimeout(() => {
       e.target.value = ''; // TODO - instead of clearing here, we could enter the searches into a list to be recalled later
