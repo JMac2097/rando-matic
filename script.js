@@ -66,6 +66,15 @@ const randomSelect = () => {
   const times = 30;
   const time = 100;
 
+  const tags = tagsEl.querySelectorAll('.tag');
+
+  if (tags.length <= 1) {
+    alert('Please enter more than one tag, sucka');
+    return;
+  }
+
+
+
   const interval = setInterval(() => {
     const randomTag = pickRandomTag();
 
@@ -96,7 +105,11 @@ const randomSelect = () => {
 
 const pickRandomTag = () => {
   const tags = document.querySelectorAll('.tag');
-  return tags[Math.floor(Math.random() * tags.length)];
+  if (tags.length > 0) {
+    return tags[Math.floor(Math.random() * tags.length)];
+  } else {
+    alert('Please enter more than one tag');
+  }
 };
 
 const highLightTag = (tag) => {
