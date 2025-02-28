@@ -1,4 +1,4 @@
-const tagsEl = document.getElementById('tags');
+const tagsContainer = document.getElementById('tags');
 const textarea = document.querySelector('.text-input');
 const messageContainer = document.querySelector('.message');
 const tagArray = [];
@@ -38,12 +38,12 @@ const createTags = (input) => {
 };
 
 const applyTag = (tags) => {
-	tagsEl.innerHTML = '';
+	tagsContainer.innerHTML = '';
   tags.forEach((tag) => {
     const tagEl = document.createElement('span');
     tagEl.classList.add('tag');
     tagEl.innerText = tag;
-    tagsEl.appendChild(tagEl);
+    tagsContainer.appendChild(tagEl);
     messageContainer.classList.add('hidden');
   });
 }
@@ -57,7 +57,7 @@ const applyTag = (tags) => {
 const checkTagsLength = (tags) => {
   if (tags.length > 1) {
     alert('Please enter less than 10 tags');
-    tagsEl.textContent = "";
+    tagsContainer.textContent = "";
   }
 }
 
@@ -66,7 +66,7 @@ const randomSelect = () => {
   const times = 30;
   const time = 100;
 
-  const tags = tagsEl.querySelectorAll('.tag');
+  const tags = tagsContainer.querySelectorAll('.tag');
 
   if (tags.length <= 1) {
     alert('Please enter more than one tag, sucka');
@@ -98,7 +98,9 @@ const randomSelect = () => {
       const winner = document.querySelector('.tag.highlight').innerHTML;
       messageContainer.querySelector('.winner').innerHTML = winner;
       messageContainer.classList.remove('hidden');
-			resetButton.addEventListener('click', resetTags);
+			resetButton.addEventListener('click', () => {
+				resetTags(tags);
+			});
     }, time); // Small delay to ensure DOM update
   }, times * time);
 };
@@ -120,8 +122,10 @@ const unhighLightTag = (tag) => {
   tag.classList.remove('highlight');
 };
 
-const resetTags = () => {
-	tagsEl.textContent = "";
+
+//TODO -- reset is still notr working correctly, I think we are reinstating the tags when we submit a new set
+const resetTags = (tags) => {
+	tagsContainer.innerHTML = "";
 	messageContainer.classList.add('hidden');
 }
 
